@@ -1,0 +1,27 @@
+- install samba
+    #yum install samba
+    
+- disable firewall  
+    #systemctl disable firewalld.service 
+
+- disalbe selinux  
+    #vi /etc/selinux/config，
+        set SELINU=disabled
+        
+- set samba config
+```
+[global]
+    workgroup = WORKGROUP
+    server string = Samba Server Version %v
+    netbios name = Samba
+    security = user
+    map to guest = Bad User
+
+[public]
+    path = /share
+    public = yes
+```
+
+- connect in windown
+    # \\${ip}\public
+
